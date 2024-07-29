@@ -9,19 +9,30 @@ const useStyles = createUseStyles({
         alignItems: "center"
     },
     formContainer: {
+        height: "50vh",
+        width: "30vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: "1px solid rgb(200, 200, 200)",
-        borderRadius: "40px"
+        border: "4px solid rgb(200, 200, 200)",
+        borderRadius: "40px",
+        padding: "40px"
     },
     form: {
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-evenly",
         alignItems: "center",
-        height: "50vh",
-        padding: "40px"
+        '& .form-group, label': {
+            color: "rgb(245, 245, 245)",
+            paddingBottom: "10px",
+            fontFamily: "Arial",
+            fontWeight: 600
+        },
+        '& .form-group, input': {
+            width: "25vh"
+        }
     }
 })
 

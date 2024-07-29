@@ -9,19 +9,24 @@ const Registration = () => {
             <div className={classes.formContainer}>
                 <form className={classes.form}>
                     <div className='form-group'>
-                        <input className='form-control-md' type="text" placeholder='First Name' style={{textAlign:"center", padding:"5px", fontFamily: "Cormorant Garamond", width: "100%"}}/>
+                        <label for="firstName">First name</label>
+                        <input className='form-control-md' type="text"/>
                     </div>
                     <div className='form-group'>
-                        <input className='form-control-md' type="text" placeholder='Last Name' style={{textAlign:"center", padding:"5px", fontFamily: "Cormorant Garamond"}}/>
+                        <label for="firstName">Last name</label>
+                        <input className='form-control-md' type="text"/>
                     </div>
                     <div className='form-group'>
-                        <input className='form-control-md' type="text" placeholder='Title' style={{textAlign:"center", padding:"5px", fontFamily: "Cormorant Garamond"}}/>
+                        <label for="firstName">Title name</label>
+                        <input className='form-control-md' type="text"/>
                     </div>
                     <div className='form-group'>
-                        <input className='form-control-md' type="text" placeholder='Email' style={{textAlign:"center", padding:"5px", fontFamily: "Cormorant Garamond"}}/>
+                        <label for="firstName">Email address</label>
+                        <input className='form-control-md' type="text"/>
                     </div>
                     <div className='form-group'>
-                        <input className='form-control-md' type="text" placeholder='Phone number' style={{textAlign:"center", padding:"5px", fontFamily: "Cormorant Garamond"}}/>
+                        <label for="firstName">Phone number</label>
+                        <input className='form-control-md' type="text"/>
                     </div>
                 </form>
             </div>
