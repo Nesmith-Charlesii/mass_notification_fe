@@ -10,19 +10,18 @@ const useStyles = createUseStyles({
     },
     formContainer: {
         height: "50vh",
-        width: "30vw",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        border: "4px solid rgb(200, 200, 200)",
+        border: "2px solid rgb(200, 200, 200)",
         borderRadius: "40px",
-        padding: "40px"
     },
     form: {
+        padding: "50px",
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-evenly",
+        justifyContent: "space-around",
         alignItems: "center",
         '& .form-group, label': {
             color: "rgb(245, 245, 245)",
@@ -30,9 +29,16 @@ const useStyles = createUseStyles({
             fontFamily: "Arial",
             fontWeight: 600
         },
+        '& .form-group': {
+            marginBottom: "8px"
+        },
         '& .form-group, input': {
-            width: "25vh"
+            width: "25vh",
         }
+    },
+    buttonContainer: {
+        paddingTop: "25px",
+        width: "100%",
     }
 })
 
