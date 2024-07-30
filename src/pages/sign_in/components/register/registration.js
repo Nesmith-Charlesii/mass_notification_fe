@@ -17,7 +17,7 @@ const Registration = () => {
                         <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
-                        <label for="title">Title name</label>
+                        <label for="title">Title</label>
                         <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
