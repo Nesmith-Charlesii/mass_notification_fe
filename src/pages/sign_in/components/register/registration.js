@@ -29,67 +29,87 @@ const Registration = () => {
             <div className={classes.formContainer}>
                 <form className={classes.form} onSubmit={handleSubmit}>
                     <div className='form-group'>
-                        <label for="firstName">First name</label>
+                        <label htmlFor="firstName">First name</label>
                         <input 
                         className='form-control-md' 
                         type="text" 
                         value={formInput["first_name"]} 
                         onChange={(e) => setFormInput(e.target.value)} 
-                        style={{paddingLeft: "3px"}} 
+                        style={{paddingLeft: "4px"}} 
                         required
                         />
                     </div>
 
                     <div className='form-group'>
-                        <label for="lastName">Last name</label>
+                        <label htmlFor="lastName">Last name</label>
                         <input 
                         className='form-control-md' 
                         type="text"
                         value={formInput["last_name"]} 
                         onChange={(e) => setFormInput(e.target.value)} 
-                        style={{paddingLeft: "3px"}}
+                        style={{paddingLeft: "4px"}}
                         required
                         />
                     </div>
 
                     <div className='form-group'>
-                        <label for="title">Title</label>
+                        <label htmlFor="title">Title</label>
                         <input 
                         className='form-control-md' 
                         type="text" 
                         value={formInput["title"]}
                         onChange={(e) => setFormInput(e.target.value)} 
-                        style={{paddingLeft: "3px"}}
+                        style={{paddingLeft: "4px"}}
                         />
                     </div>
 
                     <div className='form-group'>
-                        <label for="email">Email address</label>
+                        <label htmlFor="email">Email address</label>
                         <input 
                         className='form-control-md' 
                         type="email" 
                         value={formInput["email"]}
                         onChange={(e) => setFormInput(e.target.value)} 
-                        style={{paddingLeft: "3px"}}
-                        required
+                        style={{paddingLeft: "4px"}}
+                        required = "yo"
                         />
                     </div>
 
                     <div className='form-group'>
-                        <label for="phoneNumber">Phone number</label>
+                        <label htmlFor="phoneNumber">Phone number</label>
                         <input 
                         className='form-control-md' 
-                        type="number"
+                        type="tel"
                         value={formInput["phone_number"]} 
                         onChange={(e) => setFormInput(e.target.value)} 
-                        style={{paddingLeft: "3px"}}
+                        style={{paddingLeft: "4px"}}
+                        />
+                    </div>
+
+                    <div className='form-group'>
+                        <label htmlFor="password">Password</label>
+                        <input 
+                        className='form-control-md' 
+                        type="password"
+                        value={formInput["password"]} 
+                        onChange={(e) => setFormInput(e.target.value)} 
+                        style={{paddingLeft: "4px"}}
+                        />
+                    </div>
+
+                    <div className='form-group'>
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                        <input 
+                        className='form-control-md' 
+                        type="password"
+                        style={{paddingLeft: "4px"}}
                         />
                     </div>
 
                     <div className={classes.buttonContainer}>
-                        <button type="button" className='btn btn-primary'>Sign up disable={mutation.isLoading}</button>
+                        <button type="submit" className='btn btn-primary' disable={mutation.isLoading.toString()}>Sign up</button>
                         { mutation.isLoading && <p>Adding user...</p> }
-                        { mutation.isError && <p>Error: {mutation.error.message}</p> }
+                        { mutation.isError && <p style={{ color: "rgb(240,240,240)", marginTop: "10px" }}>Error: {mutation.error.message}</p> }
                     </div>
                     
                 </form>
