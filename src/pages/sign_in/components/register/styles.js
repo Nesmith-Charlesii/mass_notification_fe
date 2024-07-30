@@ -9,7 +9,7 @@ const useStyles = createUseStyles({
         alignItems: "center"
     },
     formContainer: {
-        height: "50vh",
+        minHeight: "40vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -21,7 +21,6 @@ const useStyles = createUseStyles({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
         alignItems: "center",
         '& .form-group, label': {
             color: "rgb(245, 245, 245)",

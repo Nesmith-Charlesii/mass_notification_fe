@@ -13,20 +13,20 @@ const Registration = () => {
                         <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
-                        <label for="firstName">Last name</label>
+                        <label for="lastName">Last name</label>
                         <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
-                        <label for="firstName">Title name</label>
+                        <label for="title">Title name</label>
                         <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
-                        <label for="firstName">Email address</label>
-                        <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
+                        <label for="email">Email address</label>
+                        <input className='form-control-md' type="email" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className='form-group'>
-                        <label for="firstName">Phone number</label>
-                        <input className='form-control-md' type="text" style={{paddingLeft: "3px"}}/>
+                        <label for="phoneNumber">Phone number</label>
+                        <input className='form-control-md' type="number" style={{paddingLeft: "3px"}}/>
                     </div>
                     <div className={classes.buttonContainer}>
                         <button type="button" className='btn btn-primary'>Sign up</button>
