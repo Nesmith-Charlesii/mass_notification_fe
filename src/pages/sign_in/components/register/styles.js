@@ -10,6 +10,7 @@ const useStyles = createUseStyles({
     },
     formContainer: {
         minHeight: "40vh",
+        width: "400px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -19,6 +20,7 @@ const useStyles = createUseStyles({
     form: {
         padding: "50px",
         height: "100%",
+        maxWidth: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -32,7 +34,7 @@ const useStyles = createUseStyles({
             marginBottom: "8px"
         },
         '& .form-group, input': {
-            width: "25vh",
+            width: "100%",
         }
     },
     buttonContainer: {
