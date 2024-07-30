@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation } from 'react-query';
 import { createUser } from '../../../../api/users/api';
 import useStyles from './styles';
 
@@ -87,7 +87,7 @@ const Registration = () => {
                     </div>
 
                     <div className={classes.buttonContainer}>
-                        <button type="button" className='btn btn-primary'>Sign up</button>
+                        <button type="button" className='btn btn-primary'>Sign up disable={mutation.isLoading}</button>
                         { mutation.isLoading && <p>Adding user...</p> }
                         { mutation.isError && <p>Error: {mutation.error.message}</p> }
                     </div>

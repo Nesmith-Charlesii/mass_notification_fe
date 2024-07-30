@@ -6,6 +6,6 @@ const createUser = async(user) => {
     return data
 }
 
-module.exports = {
+export {
     createUser
 }
