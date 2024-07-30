@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { createUser } from '../../../../api/users/api';
 import useStyles from './styles';
@@ -7,6 +7,8 @@ const Registration = () => {
     const classes = useStyles();
 
     const [formInput, setFormInput] = useState({})
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const mutation = useMutation(createUser, {
         // onSuccess and onError are built-in functions from react-query
@@ -19,10 +21,23 @@ const Registration = () => {
         }
     });
 
+    useEffect(() => {
+        console.log(formInput)
+    }, [formInput])
+
+    const handleOnInput = (e) => {
+        if(e.target.id === 'password') {
+            setPassword(e.target.value)
+        } else if(e.target.id === 'confirmPassword') {
+            setConfirmPassword(e.target.value)
+        }
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         mutation.mutate({ formInput })
     }
+
 
     return (
         <div className={classes.container}>
@@ -88,26 +103,32 @@ const Registration = () => {
 
                     <div className='form-group'>
                         <label htmlFor="password">Password</label>
-                        <input 
+                        <input
+                        id="password" 
                         className='form-control-md' 
                         type="password"
-                        value={formInput["password"]} 
+                        value={formInput["password"]}
+                        onInput={(e) => handleOnInput(e)}
                         onChange={(e) => setFormInput(e.target.value)} 
                         style={{paddingLeft: "4px"}}
+                        required
                         />
                     </div>
 
                     <div className='form-group'>
                         <label htmlFor="confirmPassword">Confirm Password</label>
                         <input 
+                        id="confirmPassword"
                         className='form-control-md' 
                         type="password"
+                        onInput={(e) => handleOnInput(e)}
                         style={{paddingLeft: "4px"}}
+                        required
                         />
                     </div>
 
                     <div className={classes.buttonContainer}>
-                        <button type="submit" className='btn btn-primary' disable={mutation.isLoading.toString()}>Sign up</button>
+                        <button type="submit" className='btn btn-primary' disabled={mutation.isLoading || (password === '' || confirmPassword !== password)}>Sign up</button>
                         { mutation.isLoading && <p>Adding user...</p> }
                         { mutation.isError && <p style={{ color: "rgb(240,240,240)", marginTop: "10px" }}>Error: {mutation.error.message}</p> }
                     </div>
