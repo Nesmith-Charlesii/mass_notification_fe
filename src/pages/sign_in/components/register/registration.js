@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from 'react-query';
 import { createUser } from '../../../../api/users/api';
 import useStyles from './styles';
@@ -7,7 +7,6 @@ const Registration = () => {
     const classes = useStyles();
 
     const [formInput, setFormInput] = useState({})
-    const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
     const mutation = useMutation(createUser, {
@@ -21,19 +20,18 @@ const Registration = () => {
         }
     });
 
-    useEffect(() => {
-        console.log(formInput)
-    }, [formInput])
-
+    // Check if password and confirm password match in real-time while user types
     const handleOnInput = (e) => {
         if(e.target.id === 'password') {
-            setPassword(e.target.value)
-        } else if(e.target.id === 'confirmPassword') {
-            setConfirmPassword(e.target.value)
+            e.target.value === confirmPassword ? console.log("match") : console.log("no match")
+        } 
+        if(e.target.id === 'confirmPassword') {
+            e.target.value === formInput["password"] ? console.log("match") : console.log("no match")
         }
     }
 
     const handleSubmit = (e) => {
+        console.log(formInput)
         e.preventDefault();
         mutation.mutate({ formInput })
     }
@@ -49,7 +47,7 @@ const Registration = () => {
                         className='form-control-md' 
                         type="text" 
                         value={formInput["first_name"]} 
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, first_name: e.target.value})} 
                         style={{paddingLeft: "4px"}} 
                         required
                         />
@@ -61,7 +59,7 @@ const Registration = () => {
                         className='form-control-md' 
                         type="text"
                         value={formInput["last_name"]} 
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, last_name: e.target.value})} 
                         style={{paddingLeft: "4px"}}
                         required
                         />
@@ -73,7 +71,7 @@ const Registration = () => {
                         className='form-control-md' 
                         type="text" 
                         value={formInput["title"]}
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, title: e.target.value})} 
                         style={{paddingLeft: "4px"}}
                         />
                     </div>
@@ -84,9 +82,9 @@ const Registration = () => {
                         className='form-control-md' 
                         type="email" 
                         value={formInput["email"]}
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, email: e.target.value})} 
                         style={{paddingLeft: "4px"}}
-                        required = "yo"
+                        required
                         />
                     </div>
 
@@ -96,7 +94,7 @@ const Registration = () => {
                         className='form-control-md' 
                         type="tel"
                         value={formInput["phone_number"]} 
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, phone_number: e.target.value})} 
                         style={{paddingLeft: "4px"}}
                         />
                     </div>
@@ -109,7 +107,7 @@ const Registration = () => {
                         type="password"
                         value={formInput["password"]}
                         onInput={(e) => handleOnInput(e)}
-                        onChange={(e) => setFormInput(e.target.value)} 
+                        onChange={(e) => setFormInput({...formInput, password: e.target.value})} 
                         style={{paddingLeft: "4px"}}
                         required
                         />
@@ -121,14 +119,16 @@ const Registration = () => {
                         id="confirmPassword"
                         className='form-control-md' 
                         type="password"
+                        value={confirmPassword}
                         onInput={(e) => handleOnInput(e)}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
                         style={{paddingLeft: "4px"}}
                         required
                         />
                     </div>
 
                     <div className={classes.buttonContainer}>
-                        <button type="submit" className='btn btn-primary' disabled={mutation.isLoading || (password === '' || confirmPassword !== password)}>Sign up</button>
+                        <button type="submit" className='btn btn-primary' disabled={ mutation.isLoading }>Sign up</button>
                         { mutation.isLoading && <p>Adding user...</p> }
                         { mutation.isError && <p style={{ color: "rgb(240,240,240)", marginTop: "10px" }}>Error: {mutation.error.message}</p> }
                     </div>
