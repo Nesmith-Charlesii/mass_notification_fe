@@ -30,7 +30,13 @@ const Registration = () => {
         }
     }
 
+    const formatPhoneNumber = (phoneNumber) => {
+        
+    }
+
     const handleSubmit = (e) => {
+        let parsePhoneNumber = parseInt(formInput["phone_number"])
+        formInput["phone_number"] = parsePhoneNumber
         console.log(formInput)
         e.preventDefault();
         mutation.mutate({ formInput })
