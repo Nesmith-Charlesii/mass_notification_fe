@@ -33,13 +33,26 @@ const Registration = () => {
     const handlePhoneNumber = (e) => {
         let targetStr = e.target.value
         let letters = targetStr.match(/[a-zA-Z]/g)
-        console.log(letters)
         
         if(letters) {
            let cleanStr = targetStr.replace(/[a-zA-Z]/g, "")
            let phoneNumber = document.getElementById("phone_number")
            phoneNumber.value = cleanStr
         }
+
+        if(targetStr.length === 10) {
+            let intlPhoneNumber = formatPhoneNumber(targetStr)
+            console.log(intlPhoneNumber)
+        }
+    }
+
+    const formatPhoneNumber = (phoneNumber) => {
+        let digitArr = phoneNumber.split("")
+        digitArr.splice(3, 0, "-")
+        digitArr.splice(7, 0, "-")
+        console.log(digitArr)
+        let cleanStr = digitArr.join("")
+        console.log(cleanStr)
     }
 
     const handleSubmit = (e) => {
@@ -108,6 +121,7 @@ const Registration = () => {
                         id="phone_number"
                         className='form-control-md' 
                         type="tel"
+                        maxLength="10"
                         value={formInput["phone_number"]} 
                         onInput={(e) => handlePhoneNumber(e)}
                         onChange={(e) => setFormInput({...formInput, phone_number: e.target.value})} 
