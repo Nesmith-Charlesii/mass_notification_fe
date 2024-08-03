@@ -32,9 +32,14 @@ const Registration = () => {
 
     const handlePhoneNumber = (e) => {
         let targetStr = e.target.value
-        let checkNumber = targetStr.match(/[0-9]/g)
+        let letters = targetStr.match(/[a-zA-Z]/g)
+        console.log(letters)
         
-
+        if(letters) {
+           let cleanStr = targetStr.replace(/[a-zA-Z]/g, "")
+           let phoneNumber = document.getElementById("phone_number")
+           phoneNumber.value = cleanStr
+        }
     }
 
     const handleSubmit = (e) => {
@@ -100,6 +105,7 @@ const Registration = () => {
                     <div className='form-group'>
                         <label htmlFor="phoneNumber">Phone number</label>
                         <input 
+                        id="phone_number"
                         className='form-control-md' 
                         type="tel"
                         value={formInput["phone_number"]} 
