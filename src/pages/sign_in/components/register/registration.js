@@ -30,8 +30,11 @@ const Registration = () => {
         }
     }
 
-    const formatPhoneNumber = (phoneNumber) => {
+    const handlePhoneNumber = (e) => {
+        let targetStr = e.target.value
+        let checkNumber = targetStr.match(/[0-9]/g)
         
+
     }
 
     const handleSubmit = (e) => {
@@ -100,6 +103,7 @@ const Registration = () => {
                         className='form-control-md' 
                         type="tel"
                         value={formInput["phone_number"]} 
+                        onInput={(e) => handlePhoneNumber(e)}
                         onChange={(e) => setFormInput({...formInput, phone_number: e.target.value})} 
                         style={{paddingLeft: "4px"}}
                         />
