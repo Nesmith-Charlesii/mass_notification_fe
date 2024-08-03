@@ -33,26 +33,37 @@ const Registration = () => {
     const handlePhoneNumber = (e) => {
         let targetStr = e.target.value
         let letters = targetStr.match(/[a-zA-Z]/g)
+        let specialCharacters = /[=!@#$%^&*()_+{}[\]:;"'<>,.?/\\|-]/
         
         if(letters) {
-           let cleanStr = targetStr.replace(/[a-zA-Z]/g, "")
-           let phoneNumber = document.getElementById("phone_number")
-           phoneNumber.value = cleanStr
+            let cleanStr = targetStr.replace(letters, "")
+            let phoneNumber = document.getElementById("phone_number")
+            phoneNumber.value = cleanStr
+        }
+
+        if(specialCharacters) {
+            let cleanStr = targetStr.replace(specialCharacters, "")
+            let phoneNumber = document.getElementById("phone_number")
+            phoneNumber.value = cleanStr
         }
 
         if(targetStr.length === 10) {
             let intlPhoneNumber = formatPhoneNumber(targetStr)
+            let input = document.getElementById("phone_number")
             console.log(intlPhoneNumber)
+            input.value = intlPhoneNumber
         }
     }
 
     const formatPhoneNumber = (phoneNumber) => {
+        let submitValue = `+1${phoneNumber}`
+        setFormInput({...formInput, phoneNumber: submitValue})
+
         let digitArr = phoneNumber.split("")
         digitArr.splice(3, 0, "-")
         digitArr.splice(7, 0, "-")
-        console.log(digitArr)
-        let cleanStr = digitArr.join("")
-        console.log(cleanStr)
+
+        return digitArr.join("")
     }
 
     const handleSubmit = (e) => {
