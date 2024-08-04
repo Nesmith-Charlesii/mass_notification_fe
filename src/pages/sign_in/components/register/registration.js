@@ -50,26 +50,18 @@ const Registration = () => {
         if(targetStr.length === 10) {
             let intlPhoneNumber = formatPhoneNumber(targetStr)
             let input = document.getElementById("phone_number")
-            console.log(intlPhoneNumber)
             input.value = intlPhoneNumber
         }
     }
 
     const formatPhoneNumber = (phoneNumber) => {
-        let submitValue = `+1${phoneNumber}`
-        setFormInput({...formInput, phoneNumber: submitValue})
-
         let digitArr = phoneNumber.split("")
         digitArr.splice(3, 0, "-")
         digitArr.splice(7, 0, "-")
-
         return digitArr.join("")
     }
 
     const handleSubmit = (e) => {
-        let parsePhoneNumber = parseInt(formInput["phone_number"])
-        formInput["phone_number"] = parsePhoneNumber
-        console.log(formInput)
         e.preventDefault();
         mutation.mutate({ formInput })
     }
