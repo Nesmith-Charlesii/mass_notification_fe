@@ -13,7 +13,15 @@ const Registration = () => {
         // onSuccess and onError are built-in functions from react-query
         onSuccess: () => {
             alert('User added successfully');
-            setFormInput({})
+            setFormInput({
+                first_name: '',
+                last_name: '',
+                title: '',
+                email: '',
+                phone_number: '',
+                password: ''
+            })
+            setConfirmPassword('')
         },
         onError: (error) => {
             alert(`Error adding user: ${error.message}`)
@@ -32,20 +40,15 @@ const Registration = () => {
 
     const handlePhoneNumber = (e) => {
         let targetStr = e.target.value
-        let letters = targetStr.match(/[a-zA-Z]/g)
-        let specialCharacters = /[=!@#$%^&*()_+{}[\]:;"'<>,.?/\\|-]/
+        let letters = /[a-zA-Z]/g
+        let specialCharacters = /[=!@#$%^&*()_+{}[\]:;"'<>,.?/\\|-]/g
         
-        if(letters) {
-            let cleanStr = targetStr.replace(letters, "")
-            let phoneNumber = document.getElementById("phone_number")
-            phoneNumber.value = cleanStr
-        }
+        targetStr = targetStr.replace(letters, "");
+        targetStr = targetStr.replace(specialCharacters, "");
 
-        if(specialCharacters) {
-            let cleanStr = targetStr.replace(specialCharacters, "")
-            let phoneNumber = document.getElementById("phone_number")
-            phoneNumber.value = cleanStr
-        }
+        let phoneNumber = document.getElementById("phone_number")
+        
+        phoneNumber.value = targetStr;
 
         if(targetStr.length === 10) {
             let intlPhoneNumber = formatPhoneNumber(targetStr)
